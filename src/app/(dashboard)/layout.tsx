@@ -15,7 +15,7 @@ export default function RootLayout({
         <Link href={'/'} className='flex items-center lg:justify-start justify-center  gap-2'>
           <Image src={'/logo.png'} alt="logo" height={32} width={32}>
           </Image>
-          <span className="hidden lg:block">Dashboard</span>
+          <span className="hidden lg:block font-bold">Dashboard</span>
         </Link>
         <Menu/>
       </div>
