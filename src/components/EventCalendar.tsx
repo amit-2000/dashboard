@@ -32,7 +32,6 @@ function EventCalendar() {
         <Calendar onChange={onChange} value={value} />
         <div className="flex justify-between items-center my-4">
         <h1 className="text-lg font-semibold">Events</h1>
-
         <Image src="/moreDark.png" alt="" width={20} height={20} />
       </div>
         <div className='flex flex-col gap-4'>

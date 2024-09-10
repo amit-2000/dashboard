@@ -21,7 +21,7 @@ function Announcement() {
   return (
     <div className='bg-white p-3 rounded-md'>
                 <div className="flex justify-between items-center my-4">
-        <h1 className="text-lg font-semibold">Events</h1>
+        <h1 className="text-lg font-semibold">Announcements</h1>
 
         <span className='text-xs text-gray-400'>View all</span>
       </div>

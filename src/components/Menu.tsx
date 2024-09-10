@@ -1,6 +1,7 @@
-import Link from "next/link";
+import { role } from "@/lib/data";
 import Image from "next/image";
-import { title } from "process";
+import Link from "next/link";
+
 const menuItems = [
   {
     title: "MENU",
@@ -29,7 +30,12 @@ const menuItems = [
         href: "/list/parents",
         visible: ["admin", "teacher"],
       },
-
+      {
+        icon: "/subject.png",
+        label: "Subjects",
+        href: "/list/subjects",
+        visible: ["admin"],
+      },
       {
         icon: "/class.png",
         label: "Classes",
@@ -54,7 +60,12 @@ const menuItems = [
         href: "/list/assignments",
         visible: ["admin", "teacher", "student", "parent"],
       },
-
+      {
+        icon: "/result.png",
+        label: "Results",
+        href: "/list/results",
+        visible: ["admin", "teacher", "student", "parent"],
+      },
       {
         icon: "/attendance.png",
         label: "Attendance",
@@ -106,29 +117,36 @@ const menuItems = [
   },
 ];
 
-
-const Menu = () =>{
-  return <>
-  <div className="text-sm mt-4 ">
-  {
-    menuItems.map(menu =>{
-     return <div key={menu.title} className="flex flex-col gap-2" >
-        <span className="hidden lg:block text-gray-400 font-light my-">{menu.title}</span>
-        {
-          menu.items.map(item =>{
-          return <Link href={item.href} key={item.href} className="flex items-center justify-center lg:justify-start gap-4 text-grey-500 py-2 ">
-            <Image src ={item.icon} alt ="" width={20} height={20}/>
-            <span className="hidden lg:block">{item.label}</span>
-          </Link>
-          })
-        }
+const Menu = () => {
+  return (
+    <>
+      <div className="text-sm mt-4 ">
+        {menuItems.map((menu) => {
+          return (
+            <div key={menu.title} className="flex flex-col gap-2">
+              <span className="hidden lg:block text-gray-400 font-light my-">
+                {menu.title}
+              </span>
+              {menu.items.map((item) => {
+                if (item.visible.includes(role)) {
+                  return (
+                    <Link
+                      href={item.href}
+                      key={item.href}
+                      className="flex items-center justify-center lg:justify-start gap-4 text-grey-500 py-2 md:px-2 hover:bg-lamaSkyLight rounded-md"
+                    >
+                      <Image src={item.icon} alt="" width={20} height={20} />
+                      <span className="hidden lg:block">{item.label}</span>
+                    </Link>
+                  );
+                }
+              })}
+            </div>
+          );
+        })}
       </div>
-    })
-  }
-  </div>
+    </>
+  );
+};
 
-  </>
-} 
-
-
-export default Menu
+export default Menu;
