@@ -28,7 +28,7 @@ function Table({columns,renderRow, data}: {columns: {
     accessor: string,
     className?: string
   }[],
-  renderRow: (item: Teacher) =>ReactNode,
+  renderRow: (item: any) =>ReactNode,
   data:any[];
  }) {
   return (
